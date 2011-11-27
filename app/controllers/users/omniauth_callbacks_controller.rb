@@ -13,11 +13,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provide_redirect(@user, "Google", "devise.google_data")
   end
   
-  def twitter
-    @user = User.find_for_twitter_oauth(request.env["omniauth.auth"], current_user)
-    provide_redirect(@user, "Twitter", "devise.twitter_data")
-  end
-  
   
   # yahoo oauth2 authentication
   def open_id

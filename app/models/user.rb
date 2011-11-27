@@ -52,25 +52,6 @@ class User < ActiveRecord::Base
   end
 
 
-  # twitter oauth2 authentication
-  # store the twitter profile information in the user table
-  def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)   
-    data = access_token.info 
-    if user = User.find_by_email(data.email)
-      user.last_name = data.last_name
-      user.first_name = data.first_name
-      user.provider = access_token.provider
-      user.uid = access_token.uid
-      user.save
-    else # Create a user with a stub password. 
-      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20],
-                   :last_name => data.last_name, :fist_name => data.first_name, 
-                   :provider => access_token.provider, :uid => access_token.uid) 
-    end
-    return user
-  end
-
-
   # yahoo oauth2 authentication - open_id
   # yahoo provides a minimal amount of information on the user
   def self.find_for_yahoo_oauth(access_token, signed_in_resource=nil)   
