@@ -22,11 +22,19 @@ default_run_options[:pty] = true
 # If you are using Passenger mod_rails uncomment this:
 
 after "deploy", "deploy:bundle_gems"
-after "deploy:bundle_gems", "deploy:restart"
+after "deploy:bundle_gems", "deploy:migrate"
+after "deploy:migrate", "deploy:precompile"
+after "deploy:precompile", "deploy:restart"
 
  namespace :deploy do
    task :bundle_gems do
      run "cd #{deploy_to}/current && bundle install --path vendor/gems"
+   end
+   task :migrate do
+     run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake db:migrate"
+   end
+   task :precompile do
+     run "cd #{deploy_to}/current && RAILS_ENV=production bundle exec rake assets:precompile"
    end
    task :start do ; end
    task :stop do ; end
