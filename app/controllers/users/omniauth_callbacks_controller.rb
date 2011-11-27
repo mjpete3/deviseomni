@@ -13,6 +13,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provide_redirect(@user, "Google", "devise.google_data")
   end
   
+  def twitter
+    
+  end
+  
+  
   # yahoo oauth2 authentication
   def open_id
     if params[:openid_url] == "http://yahoo.com" 

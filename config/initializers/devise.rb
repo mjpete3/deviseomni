@@ -203,6 +203,7 @@ Devise.setup do |config|
   require 'openid/store/filesystem'
   config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :require => 'omniauth-openid'
   
+  config.omniauth :twitter, "7N9BzthPWcd9JQ0nmN9JA", "ty3KqHqm3ISLJaJGtRFpMvr61jASGlFX7yRvDJ5Jg"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
