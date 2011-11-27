@@ -1,5 +1,3 @@
-require "bundler/capistrano"
-
 set :application, "deviseomni"
 set :repository,  "git@github.com:mjpete3/deviseomni.git"
 
@@ -17,6 +15,9 @@ set :deploy_via, :remote_cache
 
 #this pain in the ass option allowed the remote sever to authenticate to github
 default_run_options[:pty] = true
+
+# if you're still using the script/reaper helper you will need
+# these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
 
