@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: deviseomni_production
   pool: 5
-  username: root
-  password:
+  username: devise
+  password: devise
   socket: /var/lib/mysql/mysql.sock
