@@ -26,7 +26,7 @@ after "deploy:bundle_gems", "deploy:restart"
 
  namespace :deploy do
    task :bundle_gems do
-     run "cd #{deploy_to}/current && bundle install vendor/gems"
+     run "cd #{deploy_to}/current && bundle install --path vendor/gems"
    end
    task :start do ; end
    task :stop do ; end
